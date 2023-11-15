@@ -1,0 +1,2 @@
+autorização(permissão)
+autenticação(Logado)

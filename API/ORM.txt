@@ -1,0 +1,7 @@
+
+webapi.aspnetCore
+primeira opção de criação do projeto fica marcada - na parte de escolher diretório
+depois de dar next
+ não mexa em nada e crie
+
+re

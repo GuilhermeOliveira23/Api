@@ -1,0 +1,27 @@
+API é uma ponte entre o back-end e o front-end, onde há troca de informações e ações
+Rest -> Padrão regra de implementação 
+Resful -> aplicação de todo  o Conceito(Rest)
+ implementação de todas as regras de Rest
+Json -> java script object notation
+Request pede uma informação
+Response -> resposta para informação pedida
+Get ->
+Post ->
+Delete ->
+Put ->
+Verbos - tipos de requests
+Domains(domínios) -> models
+Controller
+
+http e json fazem parte do rest
+model -> classe(dado da classe) e Regras de negócio
+View -> visual
+Controller -> métodos controladores, acesso do front com o back
+
+
+Domains -> definição das classes -propriedades
+Controllers -> métodos controladores - autenticação e autorização
+Interfaces ->definição dos métodos obrigatórios
+Repositories(repositórios)-> implementação dos métodos ou seja, as regras de negócio
+
+Domains e repositories substituem a models do mvc

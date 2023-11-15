@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>api</title>
+</head>
+
+<body>
+
+  <form onsubmit="cadastrar(event)">
+    <label for="cep">CEP</label>
+    <input type="number" placeholder="digite o cep" id="cep" onblur="chamarApi()" autocomplete="off" />
+    <span id="not-found"></span>
+
+    <br /><br />
+
+    <label for="endereco">Endereço</label>
+    <input type="text" placeholder=" ... " id="endereco" />
+    <br /><br />
+
+    <label for="bairro">Bairro</label>
+    <input type="text" placeholder=" ... " id="bairro" />
+    <br /><br />
+
+    <label for="cidade">Cidade</label>
+    <input type="text" placeholder=" ... " id="cidade" />
+    <br /><br />
+
+    <label for="estado">Estado</label>
+    <input type="text" placeholder=" ... " id="estado" />
+    <br /><br />
+    <label for="nome">Nome</label>
+    <input type="text" placeholder=" ... " id="nome" value=""/>
+    <br /><br />
+    <label for="telefone">Telefone</label>
+    <input type="number" placeholder=" ... " id="telefone" value="" />
+    <br /><br />
+    <label for="numero">Número</label>
+    <input type="number" placeholder=" ... " id="numero" value=""/>
+    <br /><br />
+
+
+
+    <button>Salvar contato</button>
+  </form>
+
+  <script>
+
+    const urlLocal = "http://localhost:3000/contatos";
+
+    async function cadastrar(e) {
+      //captura o evento de submit do form
+      e.preventDefault();
+
+      //document retorna um objeto contendo um html
+      const cep = document.getElementById("cep").value;
+      const endereco = document.getElementById("endereco").value;
+      const bairro = document.getElementById("bairro").value;
+      const cidade = document.getElementById("cidade").value;
+      const estado = document.getElementById("estado").value;
+      const nome = document.getElementById("nome").value;
+      const telefone = document.getElementById("telefone").value;
+      const numero = document.getElementById("numero").value;
+
+
+      //guarda os dados do obj
+      const objDados = { cep, endereco, bairro, cidade, estado, nome, telefone , numero };
+
+      try {
+        
+        const promise = await fetch(urlLocal, {
+          //transforma um objeto em json
+          body: JSON.stringify(objDados),
+          headers: { "Content-Type": "application/json" },
+          method: "post"
+
+        });
+
+        const retorno = promise.json();//pega o retorno da api
+        console.log(retorno);
+
+      }
+      catch (error) {
+        alert("Deu ruim" + error);
+      }
+
+    }//fim da função cadastrar
+
+    // função assíncrona - usada pois a api não retorna na hora os dados do site,
+    // tornando necessária a mesma ser de característica assíncrona
+    // 01001000
+    async function chamarApi() {
+      const cep = document.getElementById("cep").value;
+
+      const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+      try {
+        //await impede de rodar a próxima linha de código antes de retornar o fetch
+        const promise = await fetch(url)
+        const endereco = await promise.json();
+
+        exibirEndereco(endereco);
+
+        console.log(endereco);
+
+      }
+
+
+
+      catch (error) {
+        console.log("Deu ruim na api")
+        //informa o usuário
+        limparEndereco();
+        document.getElementById("not-found").innerText = "Cep inválido"
+      }//rejeitada
+    }
+    
+    function exibirEndereco(endereco) {
+
+      document.getElementById("endereco").value = endereco.logradouro;
+      document.getElementById("bairro").value = endereco.bairro;
+      document.getElementById("cidade").value = endereco.localidade;
+      document.getElementById("estado").value = endereco.uf;
+      document.getElementById("estado").value = endereco.uf;
+
+    }
+    function limparEndereco() {
+
+      document.getElementById("endereco").value = "";
+      document.getElementById("bairro").value = "";
+      document.getElementById("cidade").value = "";
+      document.getElementById("estado").value = "";
+      document.getElementById("estado").value = "";
+    }
+
+  </script>
+
+</body>
+
+</html>
