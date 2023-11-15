@@ -1,0 +1,34 @@
+{
+  "idUsuario": "9ED46F2A-ED0C-4E1C-95EB-46A85E33C022",
+  "idTipoUsuario": "34C61166-55B8-490D-84D3-03A6A0292727",
+  "idClinica": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "idEspecialidade": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "crm": "1232132"
+}
+
+	Pode Funcionar na paciente e médico:
+
+
+public Medico BuscarMedicoConsulta(Guid id)
+        {
+
+            return ctx.Medico.Include(u => u.Clinica).FirstOrDefault(e => e.IdClinica == e.IdMedico); ;
+        }
+
+
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1lZGljb0BnbWFpbC5jb20iLCJqdGkiOiI5YjYzOWVjMi03NmQ2LTQ1ZmEtOThmZC0xZjYyY2VmOTEzYjMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJDbGFpbSBQZXJzb25hbGl6YWRhIjoiVmFsb3IgcGVyc29uYWxpemFkbyIsImV4cCI6MTY5NTkzMDQ2OCwiaXNzIjoid2ViYXBpLmhlYWx0aGNsaW5pYy50YXJkZSIsImF1ZCI6IndlYmFwaS5oZWFsdGhjbGluaWMudGFyZGUifQ.tKlzLmDXmXrtd-XKTRhSnWUjXL3ZSEDVpg8gWvYsoEg
+
+
+https://github.com/senai-desenvolvimento/2023-1S-2D/blob/main/sprint-2-api/api_tarde/webapi.filmes.tarde/Controllers/GeneroController.cs
+
+{
+  "cnpj": "string",
+  "nomeFantasia": "string",
+  "razaoSocial": "string",
+  "endereco": "string",
+//Formato TimeSpan em hora no swagger ->
+
+  "horaAbertura": "06:20",
+  "horaFechamento": "09:20"
+}
